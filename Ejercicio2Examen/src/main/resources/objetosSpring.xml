@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="equipo1" class="ejercicio2Examen.entidad.Equipo">
+		<property name="nombre" value="Real_Madrid"></property>
+
+		<property name="ciudad" value="Madrid"></property>
+	</bean>
+
+	<bean id="equipo2" class="ejercicio2Examen.entidad.Equipo">
+		<property name="nombre" value="FC_Barcelona"></property>
+		<property name="ciudad" value="Barcelona"></property>
+	</bean>
+
+
+	<bean id="jugador1" class="ejercicio2Examen.entidad.Jugador">
+		<property name="nombre" value="Marcelo"></property>
+		<property name="dorsal" value="5"></property>
+	</bean>
+
+	<bean id="jugador2" class="ejercicio2Examen.entidad.Jugador">
+		<property name="nombre" value="Sergio_Ramos"></property>
+		<property name="dorsal" value="4"></property>
+	</bean>
+
+	<bean id="jugador3" class="ejercicio2Examen.entidad.Jugador">
+		<property name="nombre" value="Pique"></property>
+		<property name="dorsal" value="4"></property>
+	</bean>
+
+	<bean id="jugador4" class="ejercicio2Examen.entidad.Jugador">
+		<property name="nombre" value="Messi"></property>
+		<property name="dorsal" value="10"></property>
+	</bean>
+
+<!--  -->
+	<bean id="arrayJugadoresE1" class="ejercicio2Examen.entidad.Equipo">
+		<constructor-arg>
+			<list>
+				<bean class="ejercicio2Examen.entidad.Jugador">
+					<property name="nombre" value="Marcelo"></property>
+					<property name="dorsal" value="5"></property>
+				</bean>
+				<bean class="ejercicio2Examen.entidad.Jugador">
+					<property name="nombre" value="Sergio_Ramos"></property>
+					<property name="dorsal" value="4"></property>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="arrayJugadoresE2" class="ejercicio2Examen.entidad.Equipo">
+		<constructor-arg>
+			<list>
+				<bean class="ejercicio2Examen.entidad.Jugador">
+					<property name="nombre" value="Pique"></property>
+					<property name="dorsal" value="4"></property>
+				</bean>
+				<bean class="ejercicio2Examen.entidad.Jugador">
+					<property name="nombre" value="Messi"></property>
+					<property name="dorsal" value="10"></property>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- este fichero servira para dar de alta todos nuestros objetos en contexto 
+		de spring. Los objetos que creemos con "new" se daran de alta en la JVM, 
+		mienstras que los objetos dados de alta aquí se darán en el contexto de Spring. 
+		Los objetos dados de alta en el contexto de spring son counmente llamados 
+		"bean" para crear un objeto en spring usaremos la etiqueta "bean" y al menos 
+		necesitamos darle dos atributos, la clase y un id que debe ser unico -->
+	<bean class="entidad.Persona" id="persona1"></bean>
+
+	<!-- Podemos inicializar objetos con valores por defecto siempre y cuando 
+		tengan getters y setters -->
+
+	<bean class="entidad.Persona" id="persona2">
+		<property name="nombre" value="Jargis"></property>
+		<property name="edad" value="89"></property>
+		<property name="peso" value="740.5"></property>
+	</bean>
+
+	<!-- Hay casos en los que queremos crear objetos persona a peticion, es 
+		decir que los objetos no esten creados de antemano, para ello tenemos el 
+		alcance "prototype" Este tipo de alcance tiene un objeto base o molde del 
+		cual se crearan todos los demas objetos a peticion. pero OJO! Importante! 
+		Alerta! dichos objetos no seran gestionandos por Spring -->
+
+	<bean id="personaPrototype" class="entidad.Persona"
+		scope="prototype">
+		<property name="edad" value="18"></property>
+	</bean>
+
+	<bean id="listaPersonas" class="java.util.ArrayList"
+		scope="singleton"></bean>
+
+	<!-- El objeto persona tiene como dependencia ahora una direccion, asi que 
+		vamos a tener que inyectarsela (Inyecion de Dependencias) -->
+
+	<bean id="direccionPersona1" class="entidad.Direccion">
+		<property name="tipoVia" value="Calle">
+		</property>
+		<property name="nombreVia" value="el euro">
+		</property>
+		<property name="ciudad" value="Alcanfran">
+		</property>
+	</bean>
+
+
+	<bean id="persona3" class="entidad.Persona">
+		<property name="nombre" value="Rompetechpos"></property>
+		<property name="edad" value="45"></property>
+		<property name="peso" value="80"></property>
+		<property name="direccion" ref="direccionPersona1"></property>
+	</bean>
+	
+	<!-- Pero podemos hacer otro tipo de inyeccion de dependencias que es mediante inner Bean o bean interno -->
+
+	<bean id="persona4" class="entidad.Persona">
+		<property name="nombre" value="Estepicursor"></property>
+		<property name="edad" value="33"></property>
+		<property name="peso" value="78"></property>
+		<property name="direccion">
+			<bean class="entidad.Direccion">
+			<property name="tipoVia" value="Calle">
+		</property>
+		<property name="nombreVia" value="augusto estoy">
+		</property>
+		<property name="ciudad" value="Barcelona">
+		</property>
+			</bean>	
+		</property>
+	</bean>
+
+<!-- Crear un array con datos -->
+<bean id= "arrayPersonaRelleno" class="java.util.ArrayList">
+	<constructor-arg>
+		<list>
+			<ref bean="persona4"></ref>
+			<ref bean="persona3"></ref>
+				<bean class="entidad.Persona">
+					<property name="nombre" value="Estepicursor"></property>
+					<property name="edad" value="33"></property>
+					<property name="peso" value="78"></property>
+					<property name="direccion">
+						<bean class="entidad.Direccion">
+							<property name="tipoVia" value="Calle"></property>
+							<property name="nombreVia" value="augusto estoy"></property>
+							<property name="ciudad" value="Barcelona"></property>
+						</bean>	
+					</property>
+				</bean>	
+		</list>
+	</constructor-arg>
+</bean>
+<!-- Si tenemos constructor con parametros podemos usar ese constructor en vez ´
+de el constructor por defecto -->
+<bean id="persona5" class="entidad.Persona">
+	<constructor-arg index="0" value="Dr. Bacterio"></constructor-arg>
+	<constructor-arg index="1" value="75"></constructor-arg>
+	<constructor-arg index="2" value="60"></constructor-arg>
+<constructor-arg index="3" ref="direccion.Persona1"></constructor-arg>
+</bean>
+</beans>
