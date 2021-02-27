@@ -1,0 +1,36 @@
+package game;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Curandero extends Personaje {
+	private int sabiduria;
+
+	@Override
+	public void atacar(Personaje p) {
+		int dañoTotal;
+		if (this.getArma() instanceof Rezo) {
+			dañoTotal = getArma().usar() + sabiduria;
+
+			int curacion = (int) Math.round(dañoTotal * .1);
+			this.setSalud(this.getSalud() + curacion);
+			System.out.println("Curandero se cura " + dañoTotal);
+
+		} else {
+			dañoTotal = getArma().usar();
+		}
+
+		dañoTotal += getArma().usar() * 2;
+		System.out.println("Curandero hace " + dañoTotal);
+		p.setSalud(p.getSalud() - dañoTotal);
+	}
+
+	public int getSabiduria() {
+		return sabiduria;
+	}
+
+	public void setSabiduria(int sabiduria) {
+		this.sabiduria = sabiduria;
+	}
+
+}
