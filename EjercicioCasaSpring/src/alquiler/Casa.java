@@ -3,39 +3,46 @@ package alquiler;
 import java.util.ArrayList;
 
 public class Casa {
-	private int m2;
-	private Direccion direcion;
+	private Direccion direccion;
 	private ArrayList<Habitacion> habitaciones;
-	private Persona propietario;
-	private ArrayList<Persona> inquilino;
-	private int precio;
+	private ArrayList<Persona> inquilinos;
+	private ArrayList<Persona> propietarios;
 
-	public Casa(Direccion direcion, ArrayList<Habitacion> habitaciones, Persona propietario,
-			ArrayList<Persona> inquilino, int precio) {
+	public Casa(Direccion direccion, Persona propietario, ArrayList<Persona> inquilino, Habitacion habitacion,
+			ArrayList<Habitacion> habitaciones, ArrayList<Persona> inquilinos, ArrayList<Persona> propietarios) {
 		super();
-		this.m2 = calcularM2(habitaciones);
-
-		this.direcion = direcion;
+		this.direccion = direccion;
 		this.habitaciones = habitaciones;
-		this.propietario = propietario;
-		this.inquilino = inquilino;
-		this.precio = precio;
+		this.inquilinos = inquilinos;
+		this.propietarios = propietarios;
 	}
 
-	public int getM2() {
-		return m2;
+	public ArrayList<Persona> getInquilinos() {
+		return inquilinos;
 	}
 
-	public void setM2(int m2) {
-		this.m2 = m2;
+	public void setInquilinos(ArrayList<Persona> inquilinos) {
+		this.inquilinos = inquilinos;
 	}
 
-	public Direccion getDirecion() {
-		return direcion;
+	public ArrayList<Persona> getPropietarios() {
+		return propietarios;
 	}
 
-	public void setDirecion(Direccion direcion) {
-		this.direcion = direcion;
+	public void setPropietarios(ArrayList<Persona> propietarios) {
+		this.propietarios = propietarios;
+	}
+
+	public Casa() {
+		super();
+	}
+
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 	public ArrayList<Habitacion> getHabitaciones() {
@@ -46,42 +53,10 @@ public class Casa {
 		this.habitaciones = habitaciones;
 	}
 
-	public Persona getPropietario() {
-		return propietario;
-	}
-
-	public void setPropietario(Persona propietario) {
-		this.propietario = propietario;
-	}
-
-	public ArrayList<Persona> getInquilino() {
-		return inquilino;
-	}
-
-	public void setInquilino(ArrayList<Persona> inquilino) {
-		this.inquilino = inquilino;
-	}
-
-	public int getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-
-	public int calcularM2(ArrayList<Habitacion> habitacion) {
-		int metros = 0;
-		for (Habitacion m3 : habitacion) {
-			metros += m3.getM2();
-		}
-		return metros;
-	}
-
 	@Override
 	public String toString() {
-		return "Casa m2=" + m2 + ", direcion=" + direcion + ", habitaciones=" + habitaciones + ", propietario="
-				+ propietario + ", inquilino=" + inquilino + ", precio=" + precio;
+		return "Casa= " + direccion + ", habitaciones=" + habitaciones + ", inquilinos=" + inquilinos
+				+ ", propietarios=" + propietarios + "\n";
 	}
 
 }

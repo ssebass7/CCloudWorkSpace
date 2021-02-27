@@ -1,54 +1,56 @@
 package alquiler;
 
 public class Direccion {
-	private String tipovia;
-	private String nom_via;
-	private String cp;
-	private int num;
+	private String tipoVia, calle, numero;
+	int cp;
 
-	public Direccion(String tipovia, String nom_via, String cp, int num) {
-		super();
-		this.tipovia = tipovia;
-		this.nom_via = nom_via;
-		this.cp = cp;
-		this.num = num;
+	public String getTipoVia() {
+		return tipoVia;
 	}
 
-	public String getTipovia() {
-		return tipovia;
+	public void setTipoVia(String tipoVia) {
+		this.tipoVia = tipoVia;
 	}
 
-	public void setTipovia(String tipovia) {
-		this.tipovia = tipovia;
+	public String getCalle() {
+		return calle;
 	}
 
-	public String getNom_via() {
-		return nom_via;
+	public void setCalle(String calle) {
+		this.calle = calle;
 	}
 
-	public void setNom_via(String nom_via) {
-		this.nom_via = nom_via;
+	public String getNumero() {
+		return numero;
 	}
 
-	public String getCp() {
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public int getCp() {
 		return cp;
 	}
 
-	public void setCp(String cp) {
+	public void setCp(int cp) {
 		this.cp = cp;
 	}
 
-	public int getNum() {
-		return num;
+	public Direccion() {
+		super();
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public Direccion(String tipoVia, String calle, String numero, int cp) {
+		super();
+		this.tipoVia = tipoVia;
+		this.calle = calle;
+		this.numero = numero;
+		this.cp = cp;
 	}
 
 	@Override
 	public String toString() {
-		return "Direccion tipovia=" + tipovia + ", nom_via=" + nom_via + ", cp=" + cp + ", num=" + num;
+		return "Direccion= " + tipoVia + ", calle=" + calle + ", numero=" + numero + ", cp=" + cp + "\n";
 	}
 
 }
